@@ -1,4 +1,4 @@
-package aula3.exemplos;
+package aula_03.exemplos;
 
 public class Endereco {
     private String cep;
@@ -10,5 +10,5 @@ public class Endereco {
         this.numero = numero;
         this.complemento = complemento;
     }
-    
+
 }

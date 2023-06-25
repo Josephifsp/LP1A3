@@ -1,15 +1,15 @@
-package aula3.exemplos;
+package aula_03.exemplos;
 
 public class Retangulo {
     private final double base;
     private final double altura;
 
     public Retangulo(double base, double altura) {
-        if (base <= 0.0) {
+        if (base <= 0) {
             throw new IllegalArgumentException("Base deve ser maior que zero");
         }
 
-        if (altura <= 0.0) {
+        if (altura <= 0) {
             throw new IllegalArgumentException("Altura deve ser maior que zero");
         }
 
@@ -17,13 +17,14 @@ public class Retangulo {
         this.altura = altura;
     }
 
-    // modificador de acesso + tipo retorno + nome + parametros
+    // Modificador de acesso + tipo de retorno + nome + parâmetros
+
     public double calcularArea() {
         return base * altura;
     }
 
     public double calcularPerimetro() {
-        return 2 * (base + altura);
+        return (base + altura) * 2;
     }
 
     public double getBase() {
@@ -33,4 +34,5 @@ public class Retangulo {
     public double getAltura() {
         return altura;
     }
+
 }

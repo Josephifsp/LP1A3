@@ -1,4 +1,4 @@
-package aula4.exemplos;
+package aula_04.exemplos;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import aula3.exemplos.Quadrado;
+import aula_03.exemplos.Quadrado;
 
 public class QuadradoTest {
     
@@ -22,26 +22,25 @@ public class QuadradoTest {
 
         // Assert
         assertEquals(lado, quadrado.getLado());
-
     }
 
     @Test
-    public void oQuadradoComLado10DeveTerArea100() {
+    public void quadradoComLado10DeveTerArea100() {
         // Arrange
-        double areaEsperada = 100.00;
-        Quadrado quadrado = new Quadrado(10.0);
+        Quadrado quadrado = new Quadrado(10);
 
         // Act
         double area = quadrado.calcularArea();
 
         // Assert
-        assertEquals(areaEsperada, area);
+        assertEquals(quadrado.calcularArea(), area);
+
     }
 
     @Test
     public void oQuadradoComLado10DeveTerAreaPerimetro40() {
-        double perimetroEsperado = 40.00;
-        Quadrado quadrado = new Quadrado(10.0);
+        double perimetroEsperado = 40;
+        Quadrado quadrado = new Quadrado(10);
 
         double perimetro = quadrado.calcularPerimetro();
 
@@ -50,51 +49,47 @@ public class QuadradoTest {
 
     @Test
     public void deveAlterarOValorDoLado() {
-        Quadrado quadrado = new Quadrado(10.0);
+        Quadrado quadrado = new Quadrado(10);
 
-        quadrado.setLado(5.0);
+        quadrado.setLado(5);
 
-        assertEquals(5.0, quadrado.getLado());
+        assertEquals(5, quadrado.getLado());
     }
 
-    // Valores esperados (Expected values)
-    
+    // VALORES ESPERADOS (Expected Values)
+    // VALORES LIMITES (Boundary Values)
+    // VALORES ESTRANHOS (Strange Values)
 
-    // Valores limites (Boundary values)
     @Test
     public void deveLancarUmaExceptionQuandoOValorDeLadoForZero() {
-        assertThrowsExactly(IllegalArgumentException.class, () -> { new Quadrado(0); });
+        assertThrowsExactly(IllegalArgumentException.class, () -> {
+                new Quadrado(0);
+        });
+    }
+
+    @Test
+    public void deveLancarUmaExceptionQuandoOValorDeLadoForNegativo() {
+        assertThrowsExactly(IllegalArgumentException.class, () -> {
+                new Quadrado(-10);
+        });
     }
 
     @Test
     public void deveLancarUmaExceptionQuandoOValorDeLadoForZeroComAMsgCorreta() {
-        IllegalArgumentException exception = assertThrowsExactly(
-            IllegalArgumentException.class, () -> { new Quadrado(0); });
+        IllegalArgumentException exception =  assertThrowsExactly(
+            IllegalArgumentException.class, () -> {
+                new Quadrado(0);
+            });
 
         assertEquals("Lado deve ser maior que zero", exception.getMessage());
     }
-
-    // Valores estranhos (Strange values)
-
-    @Test
-    public void deveLancarUmaExceptionQuandoOValorDeLadoForNegativo() {
-        assertThrowsExactly(IllegalArgumentException.class, () -> { new Quadrado(-10); });
-    }
-
-    @Test
-    public void deveLancarUmaExceptionQuandoOValorDeLadoForNegativoComAMsgCorreta() {
-        IllegalArgumentException exception = assertThrowsExactly(
-            IllegalArgumentException.class, () -> { new Quadrado(-10); });
-
-        assertEquals("Lado deve ser maior que zero", exception.getMessage());
-    }
-
 
     @ParameterizedTest
-    @ValueSource(doubles = { 1.0, 3.0, 5.5, 100.0 })
+    @ValueSource(doubles = {1, 1.0, 3.0, 5.5, 100.0})
     public void testaVariosValoresParaoLado(double lado) {
         Quadrado quadrado = new Quadrado(lado);
 
         assertEquals(lado, quadrado.getLado());
     }
+
 }

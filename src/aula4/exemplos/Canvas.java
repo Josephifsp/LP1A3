@@ -1,23 +1,15 @@
-package aula4.exemplos;
+package aula_04.exemplos;
 
-import aula3.exemplos.Quadrado;
-import aula3.exemplos.Retangulo;
+import aula_03.exemplos.Quadrado;
+import aula_03.exemplos.Retangulo;
 
 public class Canvas {
-    private Quadrado[] quadrados;
+    private Quadrado[] quadrados = new Quadrado[10];
     private Retangulo[] retangulos;
     private int quantidadeQuadrados;
     private int quantidadeRetangulos;
 
     public Canvas(int capacidadeQuadrados, int capacidadeRetangulos) {
-        if(capacidadeQuadrados <= 0) {
-            throw new IllegalArgumentException("capacidade quadrados deve ser maior que zero");
-        }
-
-        if(capacidadeRetangulos <= 0) {
-            throw new IllegalArgumentException("capacidade retangulos deve ser maior que zero");
-        }
-
         quadrados = new Quadrado[capacidadeQuadrados];
         retangulos = new Retangulo[capacidadeRetangulos];
         quantidadeQuadrados = 0;
@@ -25,69 +17,67 @@ public class Canvas {
     }
 
     public void adicionarQuadrado(Quadrado quadrado) {
-        if(quantidadeQuadrados == quadrados.length) {
-            throw new RuntimeException("array de quadrados está cheio");
+        if (quantidadeQuadrados == quadrados.length) {
+            throw new RuntimeException("array de quadrados esta cheio");
         }
-
         quadrados[quantidadeQuadrados] = quadrado;
         quantidadeQuadrados++;
     }
 
     public void adicionarRetangulo(Retangulo retangulo) {
-        if(quantidadeRetangulos == retangulos.length) {
-            throw new RuntimeException("array de retangulo está cheio");
+        if (quantidadeRetangulos == retangulos.length) {
+            throw new RuntimeException("array de retangulos esta cheio");
         }
-
         retangulos[quantidadeRetangulos] = retangulo;
         quantidadeRetangulos++;
     }
-
 
     public int getQuantidadeQuadrados() {
         return quantidadeQuadrados;
     }
 
-    public int getQuantidadeRetangulos() {
+    public int getQuantidadeRerangulos() {
         return quantidadeRetangulos;
+    }
+
+    public int getCapacidadeQuadrados() {
+        return quadrados.length;
+    }
+
+    public int getCapacidadeRetangulos() {
+        return retangulos.length;
     }
 
     public double getSomaAreaQuadrados() {
         double soma = 0.0;
-
         for (int i = 0; i < quantidadeQuadrados; i++) {
             soma = soma + quadrados[i].calcularArea();
         }
-
         return soma;
     }
 
     public double getSomaAreaRetangulos() {
         double soma = 0.0;
-
         for (int i = 0; i < quantidadeRetangulos; i++) {
-            soma += retangulos[i].calcularArea();
+            soma = soma + retangulos[i].calcularArea();
         }
-
         return soma;
     }
 
     public double getSomaPerimetroQuadrados() {
         double soma = 0.0;
-
         for (int i = 0; i < quantidadeQuadrados; i++) {
             soma = soma + quadrados[i].calcularPerimetro();
         }
-
         return soma;
     }
 
     public double getSomaPerimetroRetangulos() {
         double soma = 0.0;
-
         for (int i = 0; i < quantidadeRetangulos; i++) {
-            soma += retangulos[i].calcularPerimetro();
+            soma = soma + retangulos[i].calcularPerimetro();
         }
-
         return soma;
     }
+
 }

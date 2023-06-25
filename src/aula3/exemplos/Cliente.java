@@ -1,4 +1,4 @@
-package aula3.exemplos;
+package aula_03.exemplos;
 
 public class Cliente {
     private int codigo;
@@ -19,5 +19,5 @@ public class Cliente {
         this.email = email;
         this.endereco = new Endereco(cep, numero, complemento);
     }
-    
+
 }
